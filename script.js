@@ -73,9 +73,17 @@ function addTransaction(event){
         const transaction = {
             id: generateID(),
             text: text.value,
-            amount: amount.value
+            amount: +amount.value
         }
-        console.log(transaction);
+        // Add new transaction into transactions array
+        transactions.push(transaction);
+
+        // Update transactions data
+        addTransactionDOM(transaction);
+        updateBalance();
+        
+        text.value = '';
+        amount.value = '';
     }
     
 }
