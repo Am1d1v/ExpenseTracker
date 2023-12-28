@@ -2,7 +2,7 @@
 
 const balance = document.querySelector('#balance');
 const money_plus = document.querySelector('#money-plus');
-const money_minus = document.querySelector('#money_minus');
+const money_minus = document.querySelector('#money-minus');
 const list = document.querySelector('#list');
 const form = document.querySelector('#form');
 const text = document.querySelector('#text');
@@ -41,8 +41,25 @@ function updateBalance(){
     })
     // Total Balance
     const totalBalance = amounts.reduce((acc, item) => {
-        return acc += item}, 0).toFixed(2);
-    console.log(totalBalance);    
+        return acc += item}, 0).toFixed(2);    
+
+    // Income
+    const income = amounts
+                        .filter(item => item > 0)
+                        .reduce((acc, item) => (acc += item), 0)
+                        .toFixed(2);
+
+    // Expense
+    const expense = amounts
+                        .filter(item => item < 0)
+                        .reduce((acc, item) => (acc += item), 0)
+                        .toFixed(2);                    
+
+    // Set total balance, income and expense in DOM                    
+    balance.innerHTML = `${totalBalance} $`;
+    money_plus.innerHTML = `+${income} $`;
+    money_minus.innerHTML = `${expense} $`;
+    
 }
 
 //Init App
