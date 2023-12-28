@@ -33,12 +33,25 @@ function addTransactionDOM(transaction){
     list.appendChild(item);
 }
 
+//Update the balance income and expense
+function updateBalance(){
+    // Get amount of every transaction
+    const amounts = transactions.map((transaction) => {
+        return transaction.amount;
+    })
+    // Total Balance
+    const totalBalance = amounts.reduce((acc, item) => {
+        return acc += item}, 0).toFixed(2);
+    console.log(totalBalance);    
+}
+
 //Init App
 function init(){
     list.innerHTML = '';
     transactions.forEach((transaction) => {
         addTransactionDOM(transaction);
     });
+    updateBalance();
 }
 init();
 
