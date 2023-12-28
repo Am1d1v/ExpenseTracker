@@ -100,6 +100,9 @@ input[type=text], input[type=number] {
 .list li.plus {
   border-right: 5px solid #2ecc71;
 }
+.list li.plus:hover .delete-btn {
+  opacity: 1;
+}
 .list li.minus {
   border-right: 5px solid #c0392b;
 }

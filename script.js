@@ -62,10 +62,36 @@ function updateBalance(){
     
 }
 
+// Add new transaction
+function addTransaction(event){
+    event.preventDefault();
+
+    // If transaction value is empty
+    if(text.value.trim() === '' || amount.value.trim() === ''){
+        alert('Please add a text and amount');
+    } else {
+        const transaction = {
+            id: generateID(),
+            text: text.value,
+            amount: amount.value
+        }
+        console.log(transaction);
+    }
+    
+}
+
+// Generate random ID
+function generateID(){
+    return Math.floor(Math.random() * 1000000);
+}
+
+// Add new transaction listener
+form.addEventListener('submit', addTransaction);
+
 //Init App
 function init(){
     list.innerHTML = '';
-    transactions.forEach((transaction) => {
+    transactions.forEach((transaction) => { 
         addTransactionDOM(transaction);
     });
     updateBalance();
